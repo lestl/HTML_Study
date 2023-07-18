@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Demo </title>
+
+</head>
+
+<body>
+    <h1>Form Demo</h1>
+    <button>外のボタン</button>　<!--　formの外にあってなにも起きない　-->
+    <!-- MDNにコードあるからそこで探して一つづつ覚えたらよい！ -->
+    <form action="/tacos">
+        <button type="submit">送信1</button> <!-- submitは標準に送信HTML的に書いた方がいい -->
+        <p>
+            <label for="username">ユーザー名 :</label>
+            <input id="username" type="text" placeholder="ユーザー名" name="ユーザー名">
+            <!--  file:///C:/tacos?%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%90%8D=abcd -->
+        </p>
+        <p>
+            <label for="password">パスワード</label>
+            <input id="password" type="password" placeholder="パスワード" name="password">
+        </p>
+
+        <p>
+            <label for="color">好きな色</label>
+            <input id="color" type="color" name="color">
+        </p>
+        <p>
+            <!--このようにlabelの中にinputを入れても成り立つが場合によって使い方は違う-->
+            <label>好きな数値
+                <input type="number" placeholder="数字を入力" name="num" min="1" max="100">
+                <!-- file:///C:/tacos?%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%90%8D=12414&password=657567567&color=%23ff0000&num=75858 -->
+            </label>
+
+        </p>
+        <button>送信!!!!!</button> <!-- 何も指定しないと標準はformの/TACOSに送信する -->
+        <input type="submit" value="送信！！！！！"> <!-- valueで表す文字を変えられる -->
+    </form>
+    <hr>
+
+    <h2>ハイジャック検索</h2>
+    <h3>Youtube検索</h3>
+    <form action="https://www.youtube.com/results">
+        <input type="text" name="search_query">
+        <button>Youtube検索</button>
+        </label>
+    </form>
+    <h3>Google検索</h3>
+    <form action="https://www.google.com/search">
+        <input type="text" name="q">
+        <!-- buttonがなくてもエンターで送信できる -->
+    </form>
+
+    <h2>続input</h2>
+    <form action="/birds">
+        <p>
+            <!-- checkedを入れると最初からチェックしておいてる -->
+            <input type="checkbox" name="agree_tos" id="agree" checked>
+            <label for="agree">利用規約に同意します。</label>
+        </p>
+        <p>
+            <!-- nameでグループ化する valueも大事 しないとオンになる -->
+            <label for="xs">XS:</label>
+            <input type="radio" name="size" id="xs" value="XS">
+            <label for="x">X:</label>
+            <input type="radio" name="size" id="x" value="x">
+            <label for="m">M:</label>
+            <input type="radio" name="size" id="m" value="m">
+        </p>
+        <p>
+            <label for="meal">食事を選択してください</label>
+            <select name="meal" id="meal">
+                <option value="" selected>食べない</option>
+                <option value="fish">焼き魚</option>
+                <option value="salad">サラダ</option>
+                <option value="steak">ステーキ</option>
+                <!-- checkedと同じようにselectedもある -->
+            </select>
+        </p>
+        <p>
+            <label for="cheese">チーズの量</label>
+            <input type="range" id="cheese" min="1" max="100" name="cheese_level" step="7">
+            <!-- rangeのstepでどの単位でいけるか決められる -->
+        </p>
+        <p>
+            <label for="comments">その他コメント</label>
+            <br>
+            <textarea id="comments" rows="10" cols="40" placeholder="コメントを入力してください"></textarea>
+        </p>
+        <button>送信</button>
+    </form>
+
+    <h2>バリデーション</h2>
+    <form action="/dummy">
+        <label for="first">名前</label>
+        <input type="text" id="first" name="first" required>
+        <p>
+            <label for="username">ユーザー名</label>
+            <input type="text" id="username" name="username" minlength="5" maxlength="20" required>
+        </p>
+        <p>
+            <input type="email" required>
+        </p>
+        <p>
+            <input type="url" required>
+        </p>
+        <button>送信</button>
+    </form>
+
+</body>
+
+</html>
